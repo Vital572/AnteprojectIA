@@ -196,7 +196,7 @@
             document.getElementById('userMessage').value = '';
 
             // Enviar a mensagem para o webhook
-            fetch('https://seu-webhook-aqui.com', {
+            fetch('http://localhost:5678/webhook-test/anteprojectIA', {
                 method: 'POST',
                 headers: {
                     'Content-Type': 'application/json',
