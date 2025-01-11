@@ -212,7 +212,7 @@
                 chatContent.innerHTML += `<p><strong>Chatbot:</strong> ${data.output}</p>`;
             })
             .catch(error => {
-                console.error('Erro ao enviar a mensagem:', error);
+                console.log('Erro ao enviar a mensagem:', error);
                 chatContent.innerHTML += `<p><strong>Chatbot:</strong> Algo deu errado, tente novamente.</p>`;
             });
 
