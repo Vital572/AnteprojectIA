@@ -207,8 +207,9 @@
             })
             .then(response => response.json())
             .then(data => {
+                console.log(data);
                 // Exibe a resposta do servidor (ou do chatbot)
-                chatContent.innerHTML += `<p><strong>Chatbot:</strong> ${data.json}</p>`;
+                chatContent.innerHTML += `<p><strong>Chatbot:</strong> ${data.output}</p>`;
             })
             .catch(error => {
                 console.error('Erro ao enviar a mensagem:', error);
