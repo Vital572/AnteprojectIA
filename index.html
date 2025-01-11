@@ -206,20 +206,19 @@
                 })
             })
             .then(response => {
-                 if (!response.ok) {
-                      throw new Error('Erro ao enviar a mensagem: ' + response.statusText);
-                 }
-                 return response.json();
+                if (!response.ok) {
+                   throw new Error('Erro ao enviar a mensagem: ' + response.statusText);
+                }
+                return response.json();
             })
             .then(data => {
-            // Verificar se a propriedade 'json' existe e se possui um valor
-            const chatbotResponse = data.json || 'O chatbot não conseguiu entender sua pergunta.';
-
-             chatContent.innerHTML += ´<p><strong>Chatbot:</strong> ${chatbot.response}</p>´;
+              // Verificar se a propriedade 'json' existe e se possui um valor
+                   const chatbotResponse = data.json || 'O chatbot não conseguiu entender sua pergunta.';
+                   chatContent.innerHTML += `<p><strong>Chatbot:</strong> ${chatbotResponse}</p>`;
             })
             .catch(error => {
-                console.log('Erro:', error);
-                chatContent.innerHTML += ´<p><strong>Chatbot:</strong> Ocorreu um erro: ${error.message}</p>´;
+                   console.error('Erro:', error);
+                   chatContent.innerHTML += `<p><strong>Chatbot:</strong> Ocorreu um erro: ${error.message}</p>`;
             });
 
             // Rolagem automática para a última mensagem
