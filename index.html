@@ -205,16 +205,22 @@
                     message: userMessage
                 })
             })
-            .then(output => output.json())
-            .then(data => {
-                console.log(data);
-                // Exibe a resposta do servidor (ou do chatbot)
-                chatContent.innerHTML += `<p><strong>Chatbot:</strong> ${data.output}</p>`;
+            .then(response => {
+                 if (!response.ok) {
+                      throw new Error('Erro ao enviar a mensagem: ' + response.statusText);
+                 }
+                 return response.json();
             })
-            .catch(error => {
-                console.log('Erro ao enviar a mensagem:', error);
-                chatContent.innerHTML += `<p><strong>Chatbot:</strong> Algo deu errado, tente novamente.</p>`;
-            });
+            .then(data => {
+    // Verificar se a propriedade 'json' existe e se possui um valor
+            const chatbotResponse = data.json || 'O chatbot não conseguiu entender sua pergunta.';
+
+    chatContent.innerHTML += `<p><strong>Chatbot:</strong> ${chatbot.response}</p>`;
+})
+.catch(error => {
+    console.error('Erro:', error);
+    chatContent.innerHTML += `<p><strong>Chatbot:</strong> Ocorreu um erro: ${error.message}</p>`;
+});
 
             // Rolagem automática para a última mensagem
             chatContent.scrollTop = chatContent.scrollHeight;
