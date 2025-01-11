@@ -3,7 +3,7 @@
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>Anteprojeto</title>
+  <title>Anteprojeto com Chatbot</title>
   <style>
     body {
       font-family: Arial, sans-serif;
@@ -171,6 +171,7 @@
   <script>
     const chatbot = document.getElementById('chatbot');
     const chatbotToggle = document.getElementById('chatbot-toggle');
+    const messages = document.getElementById('chatbot-messages');
 
     // Função para alternar o chatbot
     function toggleChatbot() {
@@ -179,49 +180,48 @@
     }
 
     // Função para enviar mensagem
-    function sendMessage() {
+    async function sendMessage() {
       const input = document.getElementById('chatbot-input');
-      const messages = document.getElementById('chatbot-messages');
-      const userMessage = input.value;
+      const userMessage = input.value.trim();
 
-      if (userMessage.trim() === '') return;
+      if (userMessage === '') return;
 
       // Exibir mensagem do usuário
-      const userMessageElement = document.createElement('div');
-      userMessageElement.textContent = `Você: ${userMessage}`;
-      userMessageElement.style.marginBottom = '10px';
-      messages.appendChild(userMessageElement);
+      appendMessage(`Você: ${userMessage}`, 'user');
 
       // Enviar mensagem ao webhook do n8n
-      fetch('http://localhost:5678/webhook-test/anteprojectIA', {
-        method: 'POST',
-        headers: {
-          'Content-Type': 'application/json'
-        },
-        body: JSON.stringify({ message: userMessage })
-      })
-      .then(response => response.json())
-      .then(data => {
-        // Exibir resposta da IA
-        const botMessageElement = document.createElement('div');
-        botMessageElement.textContent = `IA: ${data.reply}`;
-        botMessageElement.style.marginBottom = '10px';
-        botMessageElement.style.color = '#4CAF50';
-        messages.appendChild(botMessageElement);
+      try {
+        const response = await fetch('http://localhost:5678/webhook-test/anteprojectIA', {
+          method: 'POST',
+          headers: {
+            'Content-Type': 'application/json'
+          },
+          body: JSON.stringify({ message: userMessage })
+        });
 
-        messages.scrollTop = messages.scrollHeight; // Rolar para a última mensagem
-      })
-      .catch(error => {
+        const data = await response.json();
+
+        // Exibir resposta da IA
+        appendMessage(`IA: ${data.reply}`, 'bot');
+      } catch (error) {
         console.error('Erro ao enviar mensagem:', error);
-        const errorMessageElement = document.createElement('div');
-        errorMessageElement.textContent = 'IA: Desculpe, ocorreu um erro ao processar sua mensagem.';
-        errorMessageElement.style.marginBottom = '10px';
-        errorMessageElement.style.color = 'red';
-        messages.appendChild(errorMessageElement);
-      });
+        appendMessage('IA: Desculpe, ocorreu um erro ao processar sua mensagem.', 'bot');
+      }
 
       // Limpar o campo de entrada
       input.value = '';
+    }
+
+    // Função para adicionar mensagens ao chat
+    function appendMessage(message, sender) {
+      const messageElement = document.createElement('div');
+      messageElement.textContent = message;
+      messageElement.style.marginBottom = '10px';
+      messageElement.style.color = sender === 'bot' ? '#4CAF50' : '#333';
+      messages.appendChild(messageElement);
+
+      // Rolar para a última mensagem
+      messages.scrollTop = messages.scrollHeight;
     }
   </script>
 </body>
