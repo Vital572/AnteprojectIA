@@ -1,236 +1,228 @@
 <!DOCTYPE html>
-<html lang="pt">
-
+<html lang="en">
 <head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Anteprojecto IA</title>
-    <style>
-        /* Estilo geral */
-        body {
-            font-family: 'Arial', sans-serif;
-            margin: 0;
-            padding: 0;
-            background-color: #f4f4f9;
-            color: #333;
-            display: flex;
-            flex-direction: column;
-            align-items: center;
-        }
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Anteprojeto</title>
+  <style>
+    body {
+      font-family: Arial, sans-serif;
+      margin: 0;
+      padding: 0;
+      background-color: #f9f9f9;
+      color: #333;
+      line-height: 1.6;
+    }
 
-        header {
-            background-color: #4CAF50;
-            color: white;
-            width: 100%;
-            padding: 20px;
-            text-align: center;
-            font-size: 2em;
-            box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
-        }
+    header {
+      background-color: #4CAF50;
+      color: white;
+      text-align: center;
+      padding: 20px 0;
+      box-shadow: 0 2px 5px rgba(0, 0, 0, 0.2);
+    }
 
-        section {
-            padding: 40px 20px;
-            max-width: 1200px;
-            width: 100%;
-        }
+    main {
+      padding: 20px;
+      max-width: 800px;
+      margin: 20px auto;
+      background-color: white;
+      border-radius: 8px;
+      box-shadow: 0 4px 10px rgba(0, 0, 0, 0.1);
+    }
 
-        h2 {
-            color: #4CAF50;
-            margin-bottom: 20px;
-        }
+    .chatbot-container {
+      position: fixed;
+      bottom: 20px;
+      right: 20px;
+      width: 300px;
+      background-color: white;
+      border: 1px solid #ccc;
+      border-radius: 8px;
+      box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
+      display: none;
+      flex-direction: column;
+      animation: fadeIn 0.5s ease;
+      transform: translateY(20px);
+      opacity: 0;
+      transition: transform 0.5s ease, opacity 0.5s ease;
+    }
 
-        .content {
-            font-size: 1.1em;
-            line-height: 1.6em;
-            color: #555;
-        }
+    .chatbot-container.open {
+      display: flex;
+      transform: translateY(0);
+      opacity: 1;
+    }
 
-        .button {
-            background-color: #4CAF50;
-            color: white;
-            padding: 15px 30px;
-            border: none;
-            font-size: 1.2em;
-            cursor: pointer;
-            border-radius: 5px;
-            text-align: center;
-            margin-top: 20px;
-            transition: all 0.3s ease;
-        }
+    .chatbot-header {
+      background-color: #4CAF50;
+      color: white;
+      padding: 10px;
+      font-size: 16px;
+      border-top-left-radius: 8px;
+      border-top-right-radius: 8px;
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+    }
 
-        .button:hover {
-            background-color: #45a049;
-        }
+    .chatbot-header button {
+      background: none;
+      border: none;
+      color: white;
+      font-size: 18px;
+      cursor: pointer;
+    }
 
-        /* Estilo do chatbot flutuante */
-        #chatbot {
-            position: fixed;
-            bottom: 20px;
-            right: 20px;
-            width: 300px;
-            height: 400px;
-            background-color: #fff;
-            border-radius: 10px;
-            box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
-            display: flex;
-            flex-direction: column;
-            justify-content: space-between;
-            padding: 15px;
-            display: none;
-            animation: slideIn 0.5s ease-in-out;
-        }
+    .chatbot-messages {
+      flex-grow: 1;
+      padding: 10px;
+      overflow-y: auto;
+      max-height: 300px;
+    }
 
-        #chatbotHeader {
-            font-size: 1.3em;
-            color: #4CAF50;
-            font-weight: bold;
-            cursor: pointer;
-            text-align: center;
-        }
+    .chatbot-input {
+      display: flex;
+      border-top: 1px solid #ccc;
+    }
 
-        .chat-content {
-            overflow-y: auto;
-            flex-grow: 1;
-            padding: 10px;
-            max-height: 300px;
-        }
+    .chatbot-input input {
+      flex-grow: 1;
+      padding: 10px;
+      border: none;
+      border-bottom-left-radius: 8px;
+      outline: none;
+    }
 
-        .chat-input {
-            display: flex;
-            margin-top: 10px;
-        }
+    .chatbot-input button {
+      padding: 10px;
+      border: none;
+      background-color: #4CAF50;
+      color: white;
+      cursor: pointer;
+      border-bottom-right-radius: 8px;
+      transition: background-color 0.3s ease;
+    }
 
-        .chat-input input {
-            flex-grow: 1;
-            padding: 10px;
-            border: 1px solid #ddd;
-            border-radius: 5px;
-        }
+    .chatbot-input button:hover {
+      background-color: #45a049;
+    }
 
-        .chat-input button {
-            padding: 10px;
-            background-color: #4CAF50;
-            color: white;
-            border: none;
-            border-radius: 5px;
-            cursor: pointer;
-            margin-left: 10px;
-        }
+    .chatbot-toggle {
+      position: fixed;
+      bottom: 20px;
+      right: 20px;
+      background-color: #4CAF50;
+      color: white;
+      border: none;
+      border-radius: 50%;
+      width: 50px;
+      height: 50px;
+      cursor: pointer;
+      font-size: 24px;
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
+      transition: transform 0.3s ease;
+    }
 
-        .chat-input button:hover {
-            background-color: #45a049;
-        }
+    .chatbot-toggle:hover {
+      transform: scale(1.1);
+    }
 
-        /* Animação do chatbot */
-        @keyframes slideIn {
-            from {
-                transform: translateY(100%);
-            }
-
-            to {
-                transform: translateY(0);
-            }
-        }
-
-    </style>
+    @keyframes fadeIn {
+      from {
+        opacity: 0;
+        transform: translateY(20px);
+      }
+      to {
+        opacity: 1;
+        transform: translateY(0);
+      }
+    }
+  </style>
 </head>
-
 <body>
+  <header>
+    <h1>O que é um Anteprojeto?</h1>
+  </header>
+  <main>
+    <p>Um anteprojeto é uma etapa preliminar no desenvolvimento de um projeto que define as ideias principais, conceitos e o direcionamento geral antes da elaboração do projeto final.</p>
+    <p>Esta etapa é essencial para assegurar que todas as partes interessadas estejam alinhadas e para identificar potenciais desafios ou ajustes necessários antes do desenvolvimento detalhado.</p>
+  </main>
 
-    <header>
-        Anteprojecto IA
-    </header>
+  <!-- Chatbot Button -->
+  <button class="chatbot-toggle" id="chatbot-toggle" aria-label="Abrir chatbot">💬</button>
 
-    <section>
-        <h2>O que é um Anteprojeto?</h2>
-        <div class="content">
-            <p>O Anteprojeto é a primeira fase do processo de desenvolvimento de um projeto, onde se define a sua viabilidade, os
-                recursos necessários e os principais objetivos. Durante essa fase, são feitas análises de custos, cronograma e as
-                estratégias de execução. Além disso, é o momento em que as ideias iniciais são convertidas em soluções práticas
-                que guiarão as etapas subsequentes do projeto.</p>
-
-            <p>Com o avanço da Inteligência Artificial (IA), o Anteprojeto IA se torna uma ferramenta essencial para criar
-                soluções inovadoras, analisar dados e otimizar recursos de forma eficaz. O uso de IA para criar anteprojetos
-                permite automação inteligente, uma análise mais precisa e a capacidade de ajustar o projeto conforme novas
-                informações surgem.</p>
-
-            <button class="button" onclick="showChatbot()">Converse com o Chatbot</button>
-        </div>
-    </section>
-
-    <!-- Chatbot flutuante -->
-    <div id="chatbot">
-        <div id="chatbotHeader" onclick="toggleChatbot()">Chatbot</div>
-        <div class="chat-content" id="chatContent">
-            <p>Olá! Como posso te ajudar com o Anteprojeto IA?</p>
-        </div>
-        <div class="chat-input">
-            <input type="text" id="userMessage" placeholder="Digite sua mensagem..." />
-            <button onclick="sendMessage()">Enviar</button>
-        </div>
+  <!-- Chatbot Container -->
+  <div class="chatbot-container" id="chatbot">
+    <div class="chatbot-header">
+      Chatbot IA
+      <button onclick="toggleChatbot()">✖</button>
     </div>
+    <div class="chatbot-messages" id="chatbot-messages"></div>
+    <div class="chatbot-input">
+      <input type="text" id="chatbot-input" placeholder="Digite sua mensagem...">
+      <button onclick="sendMessage()">Enviar</button>
+    </div>
+  </div>
 
-    <script>
-        // Função para abrir e fechar o chatbot
-        function toggleChatbot() {
-            const chatbot = document.getElementById('chatbot');
-            chatbot.style.display = (chatbot.style.display === 'none' || chatbot.style.display === '') ? 'flex' : 'none';
-        }
+  <script>
+    const chatbot = document.getElementById('chatbot');
+    const chatbotToggle = document.getElementById('chatbot-toggle');
 
-        // Função para mostrar o chatbot
-        function showChatbot() {
-            const chatbot = document.getElementById('chatbot');
-            chatbot.style.display = 'flex';
-        }
+    // Função para alternar o chatbot
+    function toggleChatbot() {
+      const isOpen = chatbot.classList.contains('open');
+      chatbot.classList.toggle('open', !isOpen);
+    }
 
-        // Função para enviar a mensagem do chatbot
-        function sendMessage() {
-            const userMessage = document.getElementById('userMessage').value;
-            if (!userMessage.trim()) return; // Não envia se a mensagem for vazia
+    // Função para enviar mensagem
+    function sendMessage() {
+      const input = document.getElementById('chatbot-input');
+      const messages = document.getElementById('chatbot-messages');
+      const userMessage = input.value;
 
-            // Exibe a mensagem do usuário na interface
-            const chatContent = document.getElementById('chatContent');
-            chatContent.innerHTML += `<p><strong>Você:</strong> ${userMessage}</p>`;
+      if (userMessage.trim() === '') return;
 
-            // Limpar o campo de entrada
-            document.getElementById('userMessage').value = '';
+      // Exibir mensagem do usuário
+      const userMessageElement = document.createElement('div');
+      userMessageElement.textContent = `Você: ${userMessage}`;
+      userMessageElement.style.marginBottom = '10px';
+      messages.appendChild(userMessageElement);
 
-            // Enviar a mensagem para o webhook
-            fetch('http://localhost:5678/webhook-test/anteprojectIA', {
-                method: 'POST',
-                headers: {
-                    'Content-Type': 'application/json',
-                },
-                body: JSON.stringify({
-                    message: userMessage
-                })
-            })
-            .then(response => {
-                if (!response.ok) {
-                    throw new Error('Erro ao enviar a mensagem: ' + response.statusText);
-                }
-                return response.json();
-            })
-            .then(data => {
-                 try {
-        // Verificar se a propriedade 'message' existe e se possui um valor
-                    const chatbotResponse = data.message; // 'O chatbot não conseguiu entender sua pergunta.'
-                    chatContent.innerHTML += ´<p><strong>Chatbot:</strong> ${chatbot.output}</p>´;
-                 } 
-                 catch (error) {
-                 console.error('Erro ao parsear o JSON:', error);
-                 chatContent.innerHTML += ´<p><strong>Chatbot:</strong> Ocorreu um erro ao processar a resposta do chatbot.</p>´;
-              }
-           })
-           .catch(error => {
-               chatContent.innerHTML += ´<p><strong>Chatbot:</strong> Ocorreu um erro: ${error.message}</p>´;
-           });
+      // Enviar mensagem ao webhook do n8n
+      fetch('http://localhost:5678/webhook-test/anteprojectIA', {
+        method: 'POST',
+        headers: {
+          'Content-Type': 'application/json'
+        },
+        body: JSON.stringify({ message: userMessage })
+      })
+      .then(response => response.json())
+      .then(data => {
+        // Exibir resposta da IA
+        const botMessageElement = document.createElement('div');
+        botMessageElement.textContent = `IA: ${data.reply}`;
+        botMessageElement.style.marginBottom = '10px';
+        botMessageElement.style.color = '#4CAF50';
+        messages.appendChild(botMessageElement);
 
-            // Rolagem automática para a última mensagem
-            chatContent.scrollTop = chatContent.scrollHeight;
-        }
-    </script>
+        messages.scrollTop = messages.scrollHeight; // Rolar para a última mensagem
+      })
+      .catch(error => {
+        console.error('Erro ao enviar mensagem:', error);
+        const errorMessageElement = document.createElement('div');
+        errorMessageElement.textContent = 'IA: Desculpe, ocorreu um erro ao processar sua mensagem.';
+        errorMessageElement.style.marginBottom = '10px';
+        errorMessageElement.style.color = 'red';
+        messages.appendChild(errorMessageElement);
+      });
 
+      // Limpar o campo de entrada
+      input.value = '';
+    }
+  </script>
 </body>
-
 </html>
