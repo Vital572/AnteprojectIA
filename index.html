@@ -39,7 +39,7 @@
       .then(response => response.json())
       .then(data => {
         const li = document.createElement('li');
-        li.textContent = data.message;
+        li.textContent = data.output;
         messagesElement.appendChild(li);
       });
     }
