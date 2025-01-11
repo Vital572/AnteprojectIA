@@ -205,17 +205,17 @@
                     message: userMessage
                 })
             })
-            .then(output => {
-                 if (!output.ok) {
-                      throw new Error('Erro ao enviar a mensagem: ' + output.statusText);
+            .then(response => {
+                 if (!response.ok) {
+                      throw new Error('Erro ao enviar a mensagem: ' + response.statusText);
                  }
-                 return output.json();
+                 return response.json();
             })
             .then(data => {
             // Verificar se a propriedade 'json' existe e se possui um valor
             const chatbotResponse = data.json || 'O chatbot não conseguiu entender sua pergunta.';
 
-             chatContent.innerHTML += `<p><strong>Chatbot:</strong> ${chatbot.output}</p>`;
+             chatContent.innerHTML += `<p><strong>Chatbot:</strong> ${chatbot.response}</p>`;
             })
             .catch(error => {
                 console.error('Erro:', error);
