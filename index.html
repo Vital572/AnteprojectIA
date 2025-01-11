@@ -3,103 +3,98 @@
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>Anteprojeto com Chatbot</title>
+  <title>Chatbot Fixo</title>
   <style>
     body {
       font-family: Arial, sans-serif;
       margin: 0;
       padding: 0;
-      background-color: #f9f9f9;
+      background-color: #f4f4f9;
       color: #333;
-      line-height: 1.6;
     }
 
     header {
       background-color: #4CAF50;
       color: white;
       text-align: center;
-      padding: 20px 0;
-      box-shadow: 0 2px 5px rgba(0, 0, 0, 0.2);
+      padding: 20px;
+      font-size: 24px;
     }
 
     main {
-      padding: 20px;
-      max-width: 800px;
+      max-width: 900px;
       margin: 20px auto;
       background-color: white;
+      padding: 20px;
+      border-radius: 8px;
+      box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+    }
+
+    .chatbot {
+      width: 100%;
+      max-width: 600px;
+      margin: 40px auto;
+      background-color: #fff;
       border-radius: 8px;
       box-shadow: 0 4px 10px rgba(0, 0, 0, 0.1);
-    }
-
-    .chatbot-container {
-      position: fixed;
-      bottom: 20px;
-      right: 20px;
-      width: 300px;
-      background-color: white;
-      border: 1px solid #ccc;
-      border-radius: 8px;
-      box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
-      display: none;
-      flex-direction: column;
-      animation: fadeIn 0.5s ease;
-      transform: translateY(20px);
-      opacity: 0;
-      transition: transform 0.5s ease, opacity 0.5s ease;
-    }
-
-    .chatbot-container.open {
       display: flex;
-      transform: translateY(0);
-      opacity: 1;
+      flex-direction: column;
     }
 
     .chatbot-header {
       background-color: #4CAF50;
       color: white;
-      padding: 10px;
-      font-size: 16px;
+      padding: 15px;
       border-top-left-radius: 8px;
       border-top-right-radius: 8px;
-      display: flex;
-      justify-content: space-between;
-      align-items: center;
-    }
-
-    .chatbot-header button {
-      background: none;
-      border: none;
-      color: white;
       font-size: 18px;
-      cursor: pointer;
+      text-align: center;
     }
 
     .chatbot-messages {
       flex-grow: 1;
-      padding: 10px;
+      padding: 15px;
       overflow-y: auto;
-      max-height: 300px;
+      max-height: 400px;
+      border-top: 1px solid #ddd;
+    }
+
+    .chatbot-message {
+      margin-bottom: 10px;
+      padding: 10px;
+      border-radius: 6px;
+    }
+
+    .chatbot-message.user {
+      background-color: #e0f7fa;
+      text-align: right;
+    }
+
+    .chatbot-message.bot {
+      background-color: #e8f5e9;
     }
 
     .chatbot-input {
       display: flex;
-      border-top: 1px solid #ccc;
+      border-top: 1px solid #ddd;
     }
 
     .chatbot-input input {
       flex-grow: 1;
       padding: 10px;
       border: none;
-      border-bottom-left-radius: 8px;
       outline: none;
+      font-size: 16px;
+      border-bottom-left-radius: 8px;
     }
 
     .chatbot-input button {
-      padding: 10px;
+      padding: 10px 20px;
       border: none;
       background-color: #4CAF50;
       color: white;
       cursor: pointer;
+      font-size: 16px;
       border-bottom-right-radius: 8px;
       transition: background-color 0.3s ease;
     }
@@ -108,86 +103,62 @@
       background-color: #45a049;
     }
 
-    .chatbot-toggle {
-      position: fixed;
-      bottom: 20px;
-      right: 20px;
-      background-color: #4CAF50;
-      color: white;
-      border: none;
-      border-radius: 50%;
-      width: 50px;
-      height: 50px;
-      cursor: pointer;
-      font-size: 24px;
-      display: flex;
-      justify-content: center;
-      align-items: center;
-      box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
-      transition: transform 0.3s ease;
-    }
-
-    .chatbot-toggle:hover {
-      transform: scale(1.1);
-    }
-
-    @keyframes fadeIn {
-      from {
-        opacity: 0;
-        transform: translateY(20px);
-      }
-      to {
-        opacity: 1;
-        transform: translateY(0);
-      }
+    footer {
+      text-align: center;
+      padding: 10px;
+      font-size: 14px;
+      color: #777;
     }
   </style>
 </head>
 <body>
   <header>
-    <h1>O que é um Anteprojeto?</h1>
+    Chatbot Interativo
   </header>
+
   <main>
-    <p>Um anteprojeto é uma etapa preliminar no desenvolvimento de um projeto que define as ideias principais, conceitos e o direcionamento geral antes da elaboração do projeto final.</p>
-    <p>Esta etapa é essencial para assegurar que todas as partes interessadas estejam alinhadas e para identificar potenciais desafios ou ajustes necessários antes do desenvolvimento detalhado.</p>
+    <h2>Bem-vindo ao nosso Chatbot!</h2>
+    <p>Interaja com o nosso chatbot fixo para obter informações de maneira simples e rápida.</p>
+
+    <div class="chatbot">
+      <div class="chatbot-header">
+        Chatbot IA
+      </div>
+      <div class="chatbot-messages" id="chatbot-messages">
+        <!-- Mensagens serão exibidas aqui -->
+      </div>
+      <div class="chatbot-input">
+        <input type="text" id="chatbot-input" placeholder="Digite sua mensagem..." />
+        <button onclick="sendMessage()">Enviar</button>
+      </div>
+    </div>
   </main>
 
-  <!-- Chatbot Button -->
-  <button class="chatbot-toggle" id="chatbot-toggle" aria-label="Abrir chatbot">💬</button>
-
-  <!-- Chatbot Container -->
-  <div class="chatbot-container" id="chatbot">
-    <div class="chatbot-header">
-      Chatbot IA
-      <button onclick="toggleChatbot()">✖</button>
-    </div>
-    <div class="chatbot-messages" id="chatbot-messages"></div>
-    <div class="chatbot-input">
-      <input type="text" id="chatbot-input" placeholder="Digite sua mensagem...">
-      <button onclick="sendMessage()">Enviar</button>
-    </div>
-  </div>
+  <footer>
+    &copy; 2025 Chatbot Interativo. Todos os direitos reservados.
+  </footer>
 
   <script>
-    const chatbot = document.getElementById('chatbot');
-    const chatbotToggle = document.getElementById('chatbot-toggle');
-    const messages = document.getElementById('chatbot-messages');
+    const messagesContainer = document.getElementById('chatbot-messages');
 
-    // Função para alternar o chatbot
-    function toggleChatbot() {
-      const isOpen = chatbot.classList.contains('open');
-      chatbot.classList.toggle('open', !isOpen);
+    // Função para adicionar mensagens ao chat
+    function appendMessage(text, sender) {
+      const messageElement = document.createElement('div');
+      messageElement.classList.add('chatbot-message', sender);
+      messageElement.textContent = text;
+      messagesContainer.appendChild(messageElement);
+      messagesContainer.scrollTop = messagesContainer.scrollHeight; // Rolar para a última mensagem
     }
 
-    // Função para enviar mensagem
+    // Função para enviar mensagem ao webhook e exibir a resposta
     async function sendMessage() {
       const input = document.getElementById('chatbot-input');
       const userMessage = input.value.trim();
 
       if (userMessage === '') return;
 
-      // Exibir mensagem do usuário
-      appendMessage(`Você: ${userMessage}`, 'user');
+      // Exibir a mensagem do usuário
+      appendMessage(userMessage, 'user');
 
       // Enviar mensagem ao webhook do n8n
       try {
@@ -201,27 +172,15 @@
 
         const data = await response.json();
 
-        // Exibir resposta da IA
-        appendMessage(`IA: ${data.reply}`, 'bot');
+        // Exibir a resposta do chatbot
+        appendMessage(data.reply || 'Desculpe, não consegui entender sua pergunta.', 'bot');
       } catch (error) {
-        console.error('Erro ao enviar mensagem:', error);
-        appendMessage('IA: Desculpe, ocorreu um erro ao processar sua mensagem.', 'bot');
+        console.error('Erro ao se comunicar com o webhook:', error);
+        appendMessage('Ocorreu um erro ao processar sua mensagem. Tente novamente mais tarde.', 'bot');
       }
 
       // Limpar o campo de entrada
       input.value = '';
-    }
-
-    // Função para adicionar mensagens ao chat
-    function appendMessage(message, sender) {
-      const messageElement = document.createElement('div');
-      messageElement.textContent = message;
-      messageElement.style.marginBottom = '10px';
-      messageElement.style.color = sender === 'bot' ? '#4CAF50' : '#333';
-      messages.appendChild(messageElement);
-
-      // Rolar para a última mensagem
-      messages.scrollTop = messages.scrollHeight;
     }
   </script>
 </body>
