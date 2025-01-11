@@ -218,8 +218,8 @@
              chatContent.innerHTML += `<p><strong>Chatbot:</strong> ${chatbot.response}</p>`;
             })
             .catch(error => {
-                console.error('Erro:', error);
-                chatContent.innerHTML += `<p><strong>Chatbot:</strong> Ocorreu um erro: ${error.output}</p>`;
+                console.log('Erro:', error);
+                chatContent.innerHTML += `<p><strong>Chatbot:</strong> Ocorreu um erro: ${error.message}</p>`;
             });
 
             // Rolagem automática para a última mensagem
