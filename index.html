@@ -166,7 +166,7 @@ async function sendMessage() {
 
     try {
       // Requisição ao webhook
-      const response = await fetch('https://seu-webhook-n8n.com', {
+      const response = await fetch('http://localhost:5678/webhook-test/anteprojectIA', {
         method: 'POST',
         headers: {
           'Content-Type': 'application/json',
