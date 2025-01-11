@@ -215,11 +215,11 @@
             // Verificar se a propriedade 'json' existe e se possui um valor
             const chatbotResponse = data.json || 'O chatbot não conseguiu entender sua pergunta.';
 
-             chatContent.innerHTML += '<p><strong>Chatbot:</strong> ${chatbot.response}</p>';
+             chatContent.innerHTML += <p><strong>Chatbot:</strong> ${chatbot.response}</p>;
             })
             .catch(error => {
                 console.log('Erro:', error);
-                chatContent.innerHTML += '<p><strong>Chatbot:</strong> Ocorreu um erro: ${error.message}</p>';
+                chatContent.innerHTML += <p><strong>Chatbot:</strong> Ocorreu um erro: ${error.message}</p>;
             });
 
             // Rolagem automática para a última mensagem
