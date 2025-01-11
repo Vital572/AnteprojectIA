@@ -3,8 +3,9 @@
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>Chatbot Fixo</title>
+  <title>Chatbot Melhorado</title>
   <style>
+    /* Estilos do chatbot */
     body {
       font-family: Arial, sans-serif;
       margin: 0;
@@ -113,19 +114,19 @@
 </head>
 <body>
   <header>
-    Chatbot Interativo
+    Chatbot Melhorado
   </header>
 
   <main>
     <h2>Bem-vindo ao nosso Chatbot!</h2>
-    <p>Interaja com o nosso chatbot fixo para obter informações de maneira simples e rápida.</p>
+    <p>Interaja com o chatbot para obter informações ou resolver suas dúvidas.</p>
 
     <div class="chatbot">
       <div class="chatbot-header">
         Chatbot IA
       </div>
       <div class="chatbot-messages" id="chatbot-messages">
-        <!-- Mensagens serão exibidas aqui -->
+        <!-- Mensagens aparecerão aqui -->
       </div>
       <div class="chatbot-input">
         <input type="text" id="chatbot-input" placeholder="Digite sua mensagem..." />
@@ -135,7 +136,7 @@
   </main>
 
   <footer>
-    &copy; 2025 Chatbot Interativo. Todos os direitos reservados.
+    &copy; 2025 Chatbot Melhorado. Todos os direitos reservados.
   </footer>
 
   <script>
@@ -150,33 +151,47 @@
       messagesContainer.scrollTop = messagesContainer.scrollHeight; // Rolar para a última mensagem
     }
 
-    // Função para enviar mensagem ao webhook e exibir a resposta
+    // Função para enviar mensagem ao webhook e tratar erros
     async function sendMessage() {
       const input = document.getElementById('chatbot-input');
       const userMessage = input.value.trim();
 
-      if (userMessage === '') return;
+      if (!userMessage) {
+        appendMessage('Por favor, digite uma mensagem.', 'bot');
+        return;
+      }
 
-      // Exibir a mensagem do usuário
+      // Exibir mensagem do usuário
       appendMessage(userMessage, 'user');
 
-      // Enviar mensagem ao webhook do n8n
       try {
+        // Requisição ao webhook
         const response = await fetch('http://localhost:5678/webhook-test/anteprojectIA', {
           method: 'POST',
           headers: {
-            'Content-Type': 'application/json'
+            'Content-Type': 'application/json',
           },
-          body: JSON.stringify({ message: userMessage })
+          body: JSON.stringify({ message: userMessage }),
         });
+
+        if (!response.ok) {
+          throw new Error(`Erro HTTP: ${response.status}`);
+        }
 
         const data = await response.json();
 
         // Exibir a resposta do chatbot
-        appendMessage(data.reply || 'Desculpe, não consegui entender sua pergunta.', 'bot');
+        if (data.reply) {
+          appendMessage(data.reply, 'bot');
+        } else {
+          appendMessage('Desculpe, não consegui entender sua mensagem.', 'bot');
+        }
       } catch (error) {
-        console.error('Erro ao se comunicar com o webhook:', error);
-        appendMessage('Ocorreu um erro ao processar sua mensagem. Tente novamente mais tarde.', 'bot');
+        console.error('Erro ao processar a mensagem:', error);
+        appendMessage(
+          'Ocorreu um erro ao processar sua mensagem. Verifique sua conexão ou tente novamente mais tarde.',
+          'bot'
+        );
       }
 
       // Limpar o campo de entrada
