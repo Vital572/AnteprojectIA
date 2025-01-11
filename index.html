@@ -178,13 +178,24 @@
           throw new Error(`Erro HTTP: ${response.status}`);
         }
 
-        const data = await response.json();
+        // Tentar parsear o JSON da resposta
+        let data;
+        try {
+          data = await response.json();
+        } catch (e) {
+          throw new Error(
+            'Resposta do servidor não está em formato JSON válido.'
+          );
+        }
 
         // Exibir a resposta do chatbot
         if (data.reply) {
           appendMessage(data.reply, 'bot');
         } else {
-          appendMessage('Desculpe, não consegui entender sua mensagem.', 'bot');
+          appendMessage(
+            'Desculpe, não consegui entender sua mensagem.',
+            'bot'
+          );
         }
       } catch (error) {
         console.error('Erro ao processar a mensagem:', error);
