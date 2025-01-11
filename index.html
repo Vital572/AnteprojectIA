@@ -215,7 +215,7 @@
                  try {
         // Verificar se a propriedade 'message' existe e se possui um valor
                     const chatbotResponse = data.message; // 'O chatbot não conseguiu entender sua pergunta.'
-                    chatContent.innerHTML += ´<p><strong>Chatbot:</strong> ${data.output}</p>´;
+                    chatContent.innerHTML += ´<p><strong>Chatbot:</strong> ${chatbot.output}</p>´;
                  } 
                  catch (error) {
                  console.error('Erro ao parsear o JSON:', error);
