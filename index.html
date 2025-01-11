@@ -182,8 +182,8 @@ async function sendMessage() {
       const data = await response.json();
 
       // Verificar se a resposta contém o campo "reply"
-      if (data.output) {
-        appendMessage(data.output, 'bot');
+      if (data.json) {
+        appendMessage(data.json, 'bot');
       } else {
         console.warn('Formato inesperado da resposta do servidor:', data);
         appendMessage(
