@@ -152,7 +152,7 @@
     }
 
     // Função para enviar mensagem ao webhook e tratar erros
-async function sendMessage() {
+ async function sendMessage() {
     const input = document.getElementById('chatbot-input');
     const userMessage = input.value.trim();
 
@@ -166,7 +166,7 @@ async function sendMessage() {
 
     try {
       // Requisição ao webhook
-      const response = await fetch('http://localhost:5678/webhook-test/anteprojectIA', {
+      const response = await fetch('https://seu-webhook-n8n.com', {
         method: 'POST',
         headers: {
           'Content-Type': 'application/json',
@@ -181,9 +181,9 @@ async function sendMessage() {
       // Tentar parsear o JSON da resposta
       const data = await response.json();
 
-      // Verificar se a resposta contém o campo "reply"
-      if (data.json) {
-        appendMessage(data.json, 'bot');
+      // Verificar se a resposta contém o campo "output"
+      if (data.output) {
+        appendMessage(data.output, 'bot'); // Exibir a resposta do servidor
       } else {
         console.warn('Formato inesperado da resposta do servidor:', data);
         appendMessage(
@@ -201,6 +201,16 @@ async function sendMessage() {
 
     // Limpar o campo de entrada
     input.value = '';
+  }
+
+  // Função para adicionar mensagens ao chat
+  function appendMessage(text, sender) {
+    const messagesContainer = document.getElementById('chatbot-messages');
+    const messageElement = document.createElement('div');
+    messageElement.classList.add('chatbot-message', sender);
+    messageElement.textContent = text;
+    messagesContainer.appendChild(messageElement);
+    messagesContainer.scrollTop = messagesContainer.scrollHeight; // Rolar para a última mensagem
   }
   </script>
 </body>
