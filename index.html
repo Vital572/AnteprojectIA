@@ -185,6 +185,7 @@
       if (data.output) {
         appendMessage(data.output, 'bot'); // Exibir a resposta do servidor
       } else {
+        console.log('Resposta do webhook:', data);
         console.warn('Formato inesperado da resposta do servidor:', data);
         appendMessage(
           'Desculpe, não consegui entender a resposta do servidor. Por favor, tente novamente.',
