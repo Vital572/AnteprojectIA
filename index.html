@@ -1,48 +1,205 @@
 <!DOCTYPE html>
-<html>
+<html lang="pt-BR">
 <head>
-  <title>Meu Anteprojeto</title>
-  <style>
-    /* Estilos CSS para a interface do chatbot */
-    #chatbot {
-      border: 1px solid #ccc;
-      padding: 10px;
-      height: 300px;
-      overflow-y: scroll;
-    }
-    /* ... outros estilos */
-  </style>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Anteprojeto IA</title>
+    <style>
+        body {
+            margin: 0;
+            font-family: 'Arial', sans-serif;
+            background: linear-gradient(120deg, #f6d365, #fda085);
+            color: #333;
+            overflow-x: hidden;
+        }
+
+        header {
+            text-align: center;
+            padding: 50px 20px;
+            background-color: rgba(0, 0, 0, 0.1);
+            backdrop-filter: blur(10px);
+        }
+
+        header h1 {
+            font-size: 3rem;
+            color: #fff;
+            animation: fadeIn 2s ease;
+        }
+
+        header p {
+            font-size: 1.5rem;
+            margin-top: 10px;
+            color: #fff;
+            animation: fadeIn 3s ease;
+        }
+
+        section {
+            padding: 60px 20px;
+        }
+
+        .section-title {
+            text-align: center;
+            font-size: 2rem;
+            color: whitesmoke;
+            margin-bottom: 20px;
+        }
+
+        .content {
+            max-width: 800px;
+            margin: 0 auto;
+            font-size: 1.1rem;
+            color: #666;
+            line-height: 1.8;
+            text-align: justify;
+        }
+
+        .card-container {
+            display: flex;
+            justify-content: center;
+            gap: 20px;
+            flex-wrap: wrap;
+        }
+
+        .card {
+            background: white;
+            border-radius: 15px;
+            box-shadow: 0 4px 10px rgba(0, 0, 0, 0.2);
+            padding: 20px;
+            max-width: 300px;
+            transition: transform 0.3s, box-shadow 0.3s;
+        }
+
+        .card:hover {
+            transform: translateY(-10px);
+            box-shadow: 0 6px 20px rgba(0, 0, 0, 0.3);
+        }
+
+        .card h3 {
+            margin: 10px 0;
+            color: #fda085;
+        }
+
+        .card p {
+            color: #666;
+        }
+
+        footer {
+            text-align: center;
+            padding: 20px;
+            background: rgba(0, 0, 0, 0.1);
+            color: white;
+        }
+
+        @keyframes fadeIn {
+            from {
+                opacity: 0;
+            }
+            to {
+                opacity: 1;
+            }
+        }
+
+        .fade-in-section {
+            opacity: 0;
+            transform: translateY(20px);
+            transition: opacity 1s, transform 1s;
+        }
+
+        .fade-in-section.visible {
+            opacity: 1;
+            transform: translateY(0);
+        }
+    </style>
 </head>
 <body>
-  <div id="chatbot">
-    <ul id="messages"></ul>
-    <input type="text" id="userInput" />
-    <button onclick="sendMessage()">Enviar</button>
-  </div>
+    <header>
+        <h1>O que é um Anteprojeto?</h1>
+        <p>Conheça a importância de planejar e estruturar suas ideias antes de executar.</p>
+    </header>
+    
+    <section class="fade-in-section">
+        <h2 class="section-title">Definição de Anteprojeto</h2>
+        <div class="content">
+            <p>O anteprojeto é o primeiro passo para a realização de um projeto completo. Ele serve como um esboço detalhado que define os principais objetivos, estratégias e recursos necessários para sua execução.</p>
+        </div>
+    </section>
 
-  <script>
-    const messagesElement = document.getElementById('messages');
-    const userInputElement = document.getElementById('userInput');
+    <section class="fade-in-section">
+        <h2 class="section-title">Como Criar um Anteprojeto</h2>
+        <div class="content">
+            <p>Para criar um anteprojeto eficaz, siga estas etapas:</p>
+            <ul>
+                <li>Defina claramente o objetivo principal do projeto.</li>
+                <li>Liste os recursos e as restrições envolvidas.</li>
+                <li>Identifique os stakeholders e suas expectativas.</li>
+                <li>Descreva as principais etapas e cronograma.</li>
+                <li>Inclua uma análise de viabilidade inicial.</li>
+            </ul>
+        </div>
+    </section>
 
-    function sendMessage() {
-      const message = userInputElement.value;
-      userInputElement.value = '';
+    <section class="fade-in-section">
+        <h2 class="section-title">Problemas ao Criar um Anteprojeto</h2>
+        <div class="content">
+            <p>Criar um anteprojeto pode apresentar desafios, como:</p>
+            <ul>
+                <li>Falta de clareza nos objetivos.</li>
+                <li>Subestimação dos recursos necessários.</li>
+                <li>Comunicação ineficaz entre os envolvidos.</li>
+                <li>Desconsideração de possíveis riscos e imprevistos.</li>
+            </ul>
+        </div>
+    </section>
 
-      // Enviar a mensagem para o n8n
-      fetch('http://localhost:5678/webhook-test/anteprojectIA', {
-        method: 'POST',
-        headers: {
-          'Content-Type': 'application/json'
-        },
-        body: JSON.stringify({ message })
-      })
-      .then(response => response.json())
-      .then(data => {
-        const li = document.createElement('li');
-        li.textContent = data.output;
-        messagesElement.appendChild(li);
-      });
-    }
-  </script>
+    <section class="fade-in-section">
+        <h2 class="section-title">Vantagens do Anteprojeto</h2>
+        <div class="content">
+            <p>O anteprojeto oferece diversas vantagens, como:</p>
+            <ul>
+                <li>Melhor planejamento e organização.</li>
+                <li>Identificação precoce de problemas potenciais.</li>
+                <li>Otimização de recursos.</li>
+                <li>Comunicação clara entre todos os envolvidos.</li>
+            </ul>
+        </div>
+    </section>
+
+    <footer>
+        <p>&copy; 2025 - Página criada com amor e atenção aos detalhes.</p>
+    </footer>
+
+    <script>
+        document.addEventListener("scroll", () => {
+            const fadeInSections = document.querySelectorAll(".fade-in-section");
+            fadeInSections.forEach(section => {
+                const rect = section.getBoundingClientRect();
+                if (rect.top <= window.innerHeight - 100) {
+                    section.classList.add("visible");
+                }
+            });
+        });
+    </script>
+<link href="https://cdn.jsdelivr.net/npm/@n8n/chat/dist/style.css" rel="stylesheet" />
+<script type="module">
+    import { createChat } from 'https://cdn.jsdelivr.net/npm/@n8n/chat/dist/chat.bundle.es.js';
+
+    createChat({
+        webhookUrl: 'http://localhost:5678/webhook/4042d607-f790-42e3-bc7b-b53be452360d/chat',
+
+        initialMessages : [ 
+        'Olá! 👋' , 
+        'Meu nome é Grupo_11. Como posso ajudar você hoje?' 
+    ] , 
+    i18n : { 
+        en : { 
+            title : 'ANTEPROJECTO IA' , 
+            subtitle : "Inicie uma conversa. Estamos aqui para ajudar você 24 horas por dia" , 
+            footer : '' , 
+            getStarted : 'Nova conversa' , 
+            inputPlaceholder : 'Digite seu Tema' , 
+        } , 
+    } , 
+});
+</script>
 </body>
 </html>
