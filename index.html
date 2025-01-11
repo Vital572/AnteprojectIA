@@ -215,15 +215,14 @@
                  try {
         // Verificar se a propriedade 'message' existe e se possui um valor
                     const chatbotResponse = data.message || 'O chatbot não conseguiu entender sua pergunta.';
-
-                    chatContent.innerHTML += `<p><strong>Chatbot:</strong> ${chatbot.message}</p>`;
+                    chatContent.innerHTML += `<p><strong>Chatbot:</strong> ${chatbot.json}</p>`;
             } catch (error) {
                  console.error('Erro ao parsear o JSON:', error);
                  chatContent.innerHTML += `<p><strong>Chatbot:</strong> Ocorreu um erro ao processar a resposta do chatbot.</p>`;
               }
            })
            .catch(error => {
-               console.error('Erro:');
+               console.error('Erro:', error);
                chatContent.innerHTML += `<p><strong>Chatbot:</strong> Ocorreu um erro: ${error.message}</p>`;
            });
 
