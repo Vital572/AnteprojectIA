@@ -25,24 +25,48 @@
         }
 
         .hero h1 {
-            font-size: 3rem;
+            font-size: 2.5rem;
             font-weight: 700;
         }
 
         .hero p {
-            font-size: 1.5rem;
+            font-size: 1.2rem;
             margin-bottom: 20px;
         }
 
         .rounded-circle {
-            width: 150px;
-            height: 150px;
+            width: 120px;
+            height: 120px;
             object-fit: cover;
+        }
+
+        @media (min-width: 768px) {
+            .hero h1 {
+                font-size: 3.5rem;
+            }
+
+            .hero p {
+                font-size: 1.5rem;
+            }
+
+            .rounded-circle {
+                width: 150px;
+                height: 150px;
+            }
         }
 
         footer {
             background-color: #343a40;
             color: white;
+        }
+
+        .nav-link {
+            font-size: 1rem;
+        }
+
+        .service-icon {
+            font-size: 3rem;
+            margin-bottom: 15px;
         }
     </style>
 </head>
@@ -67,7 +91,7 @@
 
     <!-- Hero Section -->
     <header class="hero">
-        <div class="container">
+        <div class="container text-center">
             <h1>Bem-vindo à Anteprojeto IA</h1>
             <p>Especialistas em Anteprojetos e TFC para garantir seu sucesso acadêmico e profissional.</p>
             <a href="#services" class="btn btn-primary btn-lg">Saiba Mais</a>
@@ -78,27 +102,27 @@
     <section id="about" class="py-5">
         <div class="container text-center">
             <h2>Sobre Nós</h2>
-            <p>Na Anteprojeto IA, fornecemos soluções personalizadas para estudantes e empresas, focando em eficiência e inovação.</p>
+            <p class="lead">Na Anteprojeto IA, fornecemos soluções personalizadas para estudantes e empresas, focando em eficiência e inovação.</p>
         </div>
     </section>
 
     <!-- Serviços -->
     <section id="services" class="py-5 bg-light">
         <div class="container">
-            <h2 class="text-center">Nossos Serviços</h2>
+            <h2 class="text-center mb-4">Nossos Serviços</h2>
             <div class="row text-center">
-                <div class="col-md-4">
-                    <i class="bi bi-lightbulb display-4 text-primary"></i>
+                <div class="col-md-4 mb-4">
+                    <i class="bi bi-lightbulb service-icon text-primary"></i>
                     <h4>Consultoria</h4>
                     <p>Orientação para desenvolver seu projeto com excelência.</p>
                 </div>
-                <div class="col-md-4">
-                    <i class="bi bi-file-earmark-check display-4 text-success"></i>
+                <div class="col-md-4 mb-4">
+                    <i class="bi bi-file-earmark-check service-icon text-success"></i>
                     <h4>Revisão de TFC</h4>
                     <p>Garantimos que seu trabalho atenda aos critérios acadêmicos.</p>
                 </div>
-                <div class="col-md-4">
-                    <i class="bi bi-gear display-4 text-warning"></i>
+                <div class="col-md-4 mb-4">
+                    <i class="bi bi-gear service-icon text-warning"></i>
                     <h4>Suporte Técnico</h4>
                     <p>Ferramentas e tecnologias para potencializar seu desempenho.</p>
                 </div>
@@ -110,21 +134,21 @@
     <section id="team" class="py-5">
         <div class="container text-center">
             <h2>Nossa Equipe</h2>
-            <p>Conheça os especialistas que fazem a diferença.</p>
-            <div class="row">
+            <p class="lead">Conheça os especialistas que fazem a diferença.</p>
+            <div class="row gy-4">
                 <div class="col-md-4">
-                    <img src="https://via.placeholder.com/150" class="rounded-circle" alt="Membro">
-                    <h5>João Silva</h5>
+                    <img src="https://via.placeholder.com/150" class="rounded-circle mx-auto d-block" alt="João Silva">
+                    <h5 class="mt-3">João Silva</h5>
                     <p>Fundador e Especialista em TFC</p>
                 </div>
                 <div class="col-md-4">
-                    <img src="https://via.placeholder.com/150" class="rounded-circle" alt="Membro">
-                    <h5>Maria Oliveira</h5>
+                    <img src="https://via.placeholder.com/150" class="rounded-circle mx-auto d-block" alt="Maria Oliveira">
+                    <h5 class="mt-3">Maria Oliveira</h5>
                     <p>Consultora Acadêmica</p>
                 </div>
                 <div class="col-md-4">
-                    <img src="https://via.placeholder.com/150" class="rounded-circle" alt="Membro">
-                    <h5>Carlos Santos</h5>
+                    <img src="https://via.placeholder.com/150" class="rounded-circle mx-auto d-block" alt="Carlos Santos">
+                    <h5 class="mt-3">Carlos Santos</h5>
                     <p>Desenvolvedor de Ferramentas</p>
                 </div>
             </div>
@@ -135,8 +159,8 @@
     <section id="contact" class="py-5 bg-dark text-white">
         <div class="container text-center">
             <h2>Fale Conosco</h2>
-            <p>Entre em contato para saber mais sobre nossos serviços.</p>
-            <form>
+            <p class="lead">Entre em contato para saber mais sobre nossos serviços.</p>
+            <form class="mx-auto" style="max-width: 600px;">
                 <div class="mb-3">
                     <input type="text" class="form-control" placeholder="Seu Nome" required>
                 </div>
