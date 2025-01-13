@@ -3,34 +3,35 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Anteprojeto</title>
+    <title>Anteprojeto IA</title>
+    <!-- Bootstrap CSS -->
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.1/dist/css/bootstrap.min.css" rel="stylesheet">
+    <!-- Google Fonts -->
+    <link href="https://fonts.googleapis.com/css2?family=Roboto:wght@400;700&display=swap" rel="stylesheet">
     <style>
         body {
-            margin: 0;
-            font-family: 'Arial', sans-serif;
-            background: linear-gradient(120deg, #f6d365, #fda085);
-            color: #333;
-            overflow-x: hidden;
+            font-family: 'Roboto', sans-serif;
         }
 
-        header {
+        .hero {
+            height: 100vh;
+            background: url('https://via.placeholder.com/1920x1080?text=Anteprojeto+IA') no-repeat center center/cover;
+            display: flex;
+            align-items: center;
+            justify-content: center;
             text-align: center;
-            padding: 50px 20px;
-            background-color: rgba(0, 0, 0, 0.1);
-            backdrop-filter: blur(10px);
+            color: white;
         }
 
-        header h1 {
+        .hero h1 {
             font-size: 3rem;
-            color: #fff;
-            animation: fadeIn 2s ease;
+            font-weight: 700;
+            text-shadow: 2px 2px 5px rgba(0, 0, 0, 0.7);
         }
 
-        header p {
+        .hero p {
             font-size: 1.5rem;
-            margin-top: 10px;
-            color: #fff;
-            animation: fadeIn 3s ease;
+            margin-bottom: 20px;
         }
 
         section {
@@ -39,9 +40,9 @@
 
         .section-title {
             text-align: center;
-            font-size: 2rem;
+            font-size: 2.5rem;
             color: #fda085;
-            margin-bottom: 20px;
+            margin-bottom: 30px;
         }
 
         .content {
@@ -53,19 +54,9 @@
             text-align: justify;
         }
 
-        .card-container {
-            display: flex;
-            justify-content: center;
-            gap: 20px;
-            flex-wrap: wrap;
-        }
-
         .card {
-            background: white;
+            border: none;
             border-radius: 15px;
-            box-shadow: 0 4px 10px rgba(0, 0, 0, 0.2);
-            padding: 20px;
-            max-width: 300px;
             transition: transform 0.3s, box-shadow 0.3s;
         }
 
@@ -74,110 +65,123 @@
             box-shadow: 0 6px 20px rgba(0, 0, 0, 0.3);
         }
 
-        .card h3 {
-            margin: 10px 0;
-            color: #fda085;
-        }
-
-        .card p {
-            color: #666;
-        }
-
         footer {
-            text-align: center;
-            padding: 20px;
-            background: rgba(0, 0, 0, 0.1);
+            background-color: #343a40;
             color: white;
+            padding: 20px;
+            text-align: center;
         }
 
-        @keyframes fadeIn {
-            from {
-                opacity: 0;
+        @media (max-width: 768px) {
+            .hero h1 {
+                font-size: 2rem;
             }
-            to {
-                opacity: 1;
+
+            .hero p {
+                font-size: 1rem;
             }
-        }
-
-        .fade-in-section {
-            opacity: 0;
-            transform: translateY(20px);
-            transition: opacity 1s, transform 1s;
-        }
-
-        .fade-in-section.visible {
-            opacity: 1;
-            transform: translateY(0);
         }
     </style>
 </head>
 <body>
-    <header>
-        <h1>O que é um Anteprojeto?</h1>
-        <p>Conheça a importância de planejar e estruturar suas ideias antes de executar.</p>
+    <!-- Navbar -->
+    <nav class="navbar navbar-expand-lg navbar-dark bg-dark">
+        <div class="container">
+            <a class="navbar-brand" href="#">Anteprojeto IA</a>
+            <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNav">
+                <span class="navbar-toggler-icon"></span>
+            </button>
+            <div class="collapse navbar-collapse" id="navbarNav">
+                <ul class="navbar-nav ms-auto">
+                    <li class="nav-item"><a class="nav-link" href="#about">Sobre</a></li>
+                    <li class="nav-item"><a class="nav-link" href="#services">Serviços</a></li>
+                    <li class="nav-item"><a class="nav-link" href="#team">Equipe</a></li>
+                    <li class="nav-item"><a class="nav-link" href="#contact">Contato</a></li>
+                </ul>
+            </div>
+        </div>
+    </nav>
+
+    <!-- Hero Section -->
+    <header class="hero">
+        <div class="container text-center">
+            <h1>Bem-vindo à Anteprojeto IA</h1>
+            <p>Soluções inovadoras para Anteprojetos e TFCs.</p>
+            <a href="#services" class="btn btn-primary btn-lg">Saiba Mais</a>
+        </div>
     </header>
-    
-    <section class="fade-in-section">
-        <h2 class="section-title">Definição de Anteprojeto</h2>
-        <div class="content">
-            <p>O anteprojeto é o primeiro passo para a realização de um projeto completo. Ele serve como um esboço detalhado que define os principais objetivos, estratégias e recursos necessários para sua execução.</p>
+
+    <!-- Sobre -->
+    <section id="about" class="py-5">
+        <div class="container text-center">
+            <h2 class="section-title">Sobre Nós</h2>
+            <div class="content">
+                <p>A Anteprojeto IA é especializada em oferecer suporte para estudantes e profissionais com projetos acadêmicos e empresariais, garantindo eficiência, inovação e resultados de qualidade.</p>
+            </div>
         </div>
     </section>
 
-    <section class="fade-in-section">
-        <h2 class="section-title">Como Criar um Anteprojeto</h2>
-        <div class="content">
-            <p>Para criar um anteprojeto eficaz, siga estas etapas:</p>
-            <ul>
-                <li>Defina claramente o objetivo principal do projeto.</li>
-                <li>Liste os recursos e as restrições envolvidas.</li>
-                <li>Identifique os stakeholders e suas expectativas.</li>
-                <li>Descreva as principais etapas e cronograma.</li>
-                <li>Inclua uma análise de viabilidade inicial.</li>
-            </ul>
+    <!-- Como Criar um Anteprojeto -->
+    <section id="how-to" class="py-5 bg-light">
+        <div class="container">
+            <h2 class="section-title">Como Criar um Anteprojeto</h2>
+            <div class="content">
+                <p>Para criar um anteprojeto eficaz, siga estas etapas:</p>
+                <ul>
+                    <li>Defina claramente o objetivo principal do projeto.</li>
+                    <li>Liste os recursos e as restrições envolvidas.</li>
+                    <li>Identifique os stakeholders e suas expectativas.</li>
+                    <li>Descreva as principais etapas e cronograma.</li>
+                    <li>Inclua uma análise de viabilidade inicial.</li>
+                </ul>
+            </div>
         </div>
     </section>
 
-    <section class="fade-in-section">
-        <h2 class="section-title">Problemas ao Criar um Anteprojeto</h2>
-        <div class="content">
-            <p>Criar um anteprojeto pode apresentar desafios, como:</p>
-            <ul>
-                <li>Falta de clareza nos objetivos.</li>
-                <li>Subestimação dos recursos necessários.</li>
-                <li>Comunicação ineficaz entre os envolvidos.</li>
-                <li>Desconsideração de possíveis riscos e imprevistos.</li>
-            </ul>
+    <!-- Serviços -->
+    <section id="services" class="py-5">
+        <div class="container">
+            <h2 class="section-title">Nossos Serviços</h2>
+            <div class="row g-4">
+                <div class="col-md-4">
+                    <div class="card">
+                        <img src="https://via.placeholder.com/600x400?text=Consultoria" alt="Consultoria" class="services-img">
+                        <div class="card-body">
+                            <h4 class="card-title">Consultoria</h4>
+                            <p class="card-text">Orientação especializada para desenvolver projetos acadêmicos e profissionais.</p>
+                        </div>
+                    </div>
+                </div>
+                <div class="col-md-4">
+                    <div class="card">
+                        <img src="https://via.placeholder.com/600x400?text=Revisão+de+TFC" alt="Revisão de TFC" class="services-img">
+                        <div class="card-body">
+                            <h4 class="card-title">Revisão de TFC</h4>
+                            <p class="card-text">Análise detalhada para garantir que seu trabalho atenda aos critérios acadêmicos.</p>
+                        </div>
+                    </div>
+                </div>
+                <div class="col-md-4">
+                    <div class="card">
+                        <img src="https://via.placeholder.com/600x400?text=Suporte+Técnico" alt="Suporte Técnico" class="services-img">
+                        <div class="card-body">
+                            <h4 class="card-title">Suporte Técnico</h4>
+                            <p class="card-text">Ferramentas e tecnologias inovadoras para otimizar seus projetos.</p>
+                        </div>
+                    </div>
+                </div>
+            </div>
         </div>
     </section>
 
-    <section class="fade-in-section">
-        <h2 class="section-title">Vantagens do Anteprojeto</h2>
-        <div class="content">
-            <p>O anteprojeto oferece diversas vantagens, como:</p>
-            <ul>
-                <li>Melhor planejamento e organização.</li>
-                <li>Identificação precoce de problemas potenciais.</li>
-                <li>Otimização de recursos.</li>
-                <li>Comunicação clara entre todos os envolvidos.</li>
-            </ul>
-        </div>
-    </section>
-
+    <!-- Footer -->
     <footer>
-        <p>&copy; 2025 - Página criada com amor e atenção aos detalhes.</p>
+        <div class="container">
+            <p>&copy; 2025 Anteprojeto IA. Todos os direitos reservados.</p>
+        </div>
     </footer>
 
-    <script>
-        document.addEventListener("scroll", () => {
-            const fadeInSections = document.querySelectorAll(".fade-in-section");
-            fadeInSections.forEach(section => {
-                const rect = section.getBoundingClientRect();
-                if (rect.top <= window.innerHeight - 100) {
-                    section.classList.add("visible");
-                }
-            });
-        });
-    </script>
+    <!-- Bootstrap JS -->
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.1/dist/js/bootstrap.bundle.min.js"></script>
 </body>
 </html>
