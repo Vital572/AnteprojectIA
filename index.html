@@ -1,3 +1,4 @@
+<!-- Código Original (Página com Bootstrap e Hero Section) -->
 <!DOCTYPE html>
 <html lang="pt-BR">
 <head>
@@ -32,37 +33,6 @@
         .hero p {
             font-size: 1.5rem;
             margin-bottom: 20px;
-        }
-
-        section {
-            padding: 60px 20px;
-        }
-
-        .section-title {
-            text-align: center;
-            font-size: 2.5rem;
-            color: #fda085;
-            margin-bottom: 30px;
-        }
-
-        .content {
-            max-width: 800px;
-            margin: 0 auto;
-            font-size: 1.1rem;
-            color: #666;
-            line-height: 1.8;
-            text-align: justify;
-        }
-
-        .card {
-            border: none;
-            border-radius: 15px;
-            transition: transform 0.3s, box-shadow 0.3s;
-        }
-
-        .card:hover {
-            transform: translateY(-10px);
-            box-shadow: 0 6px 20px rgba(0, 0, 0, 0.3);
         }
 
         footer {
@@ -111,69 +81,6 @@
         </div>
     </header>
 
-    <!-- Sobre -->
-    <section id="about" class="py-5">
-        <div class="container text-center">
-            <h2 class="section-title">Sobre Nós</h2>
-            <div class="content">
-                <p>A Anteprojeto IA é especializada em oferecer suporte para estudantes e profissionais com projetos acadêmicos e empresariais, garantindo eficiência, inovação e resultados de qualidade.</p>
-            </div>
-        </div>
-    </section>
-
-    <!-- Como Criar um Anteprojeto -->
-    <section id="how-to" class="py-5 bg-light">
-        <div class="container">
-            <h2 class="section-title">Como Criar um Anteprojeto</h2>
-            <div class="content">
-                <p>Para criar um anteprojeto eficaz, siga estas etapas:</p>
-                <ul>
-                    <li>Defina claramente o objetivo principal do projeto.</li>
-                    <li>Liste os recursos e as restrições envolvidas.</li>
-                    <li>Identifique os stakeholders e suas expectativas.</li>
-                    <li>Descreva as principais etapas e cronograma.</li>
-                    <li>Inclua uma análise de viabilidade inicial.</li>
-                </ul>
-            </div>
-        </div>
-    </section>
-
-    <!-- Serviços -->
-    <section id="services" class="py-5">
-        <div class="container">
-            <h2 class="section-title">Nossos Serviços</h2>
-            <div class="row g-4">
-                <div class="col-md-4">
-                    <div class="card">
-                        <img src="https://via.placeholder.com/600x400?text=Consultoria" alt="Consultoria" class="services-img">
-                        <div class="card-body">
-                            <h4 class="card-title">Consultoria</h4>
-                            <p class="card-text">Orientação especializada para desenvolver projetos acadêmicos e profissionais.</p>
-                        </div>
-                    </div>
-                </div>
-                <div class="col-md-4">
-                    <div class="card">
-                        <img src="https://via.placeholder.com/600x400?text=Revisão+de+TFC" alt="Revisão de TFC" class="services-img">
-                        <div class="card-body">
-                            <h4 class="card-title">Revisão de TFC</h4>
-                            <p class="card-text">Análise detalhada para garantir que seu trabalho atenda aos critérios acadêmicos.</p>
-                        </div>
-                    </div>
-                </div>
-                <div class="col-md-4">
-                    <div class="card">
-                        <img src="https://via.placeholder.com/600x400?text=Suporte+Técnico" alt="Suporte Técnico" class="services-img">
-                        <div class="card-body">
-                            <h4 class="card-title">Suporte Técnico</h4>
-                            <p class="card-text">Ferramentas e tecnologias inovadoras para otimizar seus projetos.</p>
-                        </div>
-                    </div>
-                </div>
-            </div>
-        </div>
-    </section>
-
     <!-- Footer -->
     <footer>
         <div class="container">
@@ -183,5 +90,67 @@
 
     <!-- Bootstrap JS -->
     <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.1/dist/js/bootstrap.bundle.min.js"></script>
+</body>
+</html>
+
+<!-- Código Adicional (Página com Seções de Conteúdo) -->
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Anteprojeto</title>
+    <style>
+        body {
+            margin: 0;
+            font-family: 'Arial', sans-serif;
+            background: linear-gradient(120deg, #f6d365, #fda085);
+            color: #333;
+            overflow-x: hidden;
+        }
+
+        section {
+            padding: 60px 20px;
+        }
+
+        .section-title {
+            text-align: center;
+            font-size: 2.5rem;
+            color: #fda085;
+            margin-bottom: 30px;
+        }
+
+        .content {
+            max-width: 800px;
+            margin: 0 auto;
+            font-size: 1.1rem;
+            color: #666;
+            line-height: 1.8;
+            text-align: justify;
+        }
+    </style>
+</head>
+<body>
+    <!-- Seções -->
+    <section id="definition" class="py-5">
+        <h2 class="section-title">Definição de Anteprojeto</h2>
+        <div class="content">
+            <p>O anteprojeto é o primeiro passo para a realização de um projeto completo. Ele serve como um esboço detalhado que define os principais objetivos, estratégias e recursos necessários para sua execução.</p>
+        </div>
+    </section>
+
+    <section id="how-to" class="py-5 bg-light">
+        <h2 class="section-title">Como Criar um Anteprojeto</h2>
+        <div class="content">
+            <p>Para criar um anteprojeto eficaz, siga estas etapas:</p>
+            <ul>
+                <li>Defina claramente o objetivo principal do projeto.</li>
+                <li>Liste os recursos e as restrições envolvidas.</li>
+                <li>Identifique os stakeholders e suas expectativas.</li>
+                <li>Descreva as principais etapas e cronograma.</li>
+                <li>Inclua uma análise de viabilidade inicial.</li>
+            </ul>
+        </div>
+    </section>
 </body>
 </html>
