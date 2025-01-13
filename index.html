@@ -9,7 +9,6 @@
     <!-- Google Fonts -->
     <link href="https://fonts.googleapis.com/css2?family=Roboto:wght@400;700&display=swap" rel="stylesheet">
     <style>
-        /* Estilos Personalizados */
         body {
             font-family: 'Roboto', sans-serif;
         }
@@ -25,32 +24,52 @@
         }
 
         .hero h1 {
-            font-size: 2.8rem;
+            font-size: 3rem;
             font-weight: 700;
             text-shadow: 2px 2px 5px rgba(0, 0, 0, 0.7);
         }
 
         .hero p {
-            font-size: 1.3rem;
+            font-size: 1.5rem;
             margin-bottom: 20px;
         }
 
-        .services-img {
-            height: 200px;
-            width: 100%;
-            object-fit: cover;
-            border-radius: 10px;
+        section {
+            padding: 60px 20px;
         }
 
-        .rounded-circle {
-            width: 150px;
-            height: 150px;
-            object-fit: cover;
+        .section-title {
+            text-align: center;
+            font-size: 2.5rem;
+            color: #fda085;
+            margin-bottom: 30px;
+        }
+
+        .content {
+            max-width: 800px;
+            margin: 0 auto;
+            font-size: 1.1rem;
+            color: #666;
+            line-height: 1.8;
+            text-align: justify;
+        }
+
+        .card {
+            border: none;
+            border-radius: 15px;
+            transition: transform 0.3s, box-shadow 0.3s;
+        }
+
+        .card:hover {
+            transform: translateY(-10px);
+            box-shadow: 0 6px 20px rgba(0, 0, 0, 0.3);
         }
 
         footer {
             background-color: #343a40;
             color: white;
+            padding: 20px;
+            text-align: center;
         }
 
         @media (max-width: 768px) {
@@ -95,15 +114,34 @@
     <!-- Sobre -->
     <section id="about" class="py-5">
         <div class="container text-center">
-            <h2>Sobre Nós</h2>
-            <p class="lead">A Anteprojeto IA é especializada em oferecer suporte para estudantes e profissionais com projetos acadêmicos e empresariais, garantindo eficiência, inovação e resultados de qualidade.</p>
+            <h2 class="section-title">Sobre Nós</h2>
+            <div class="content">
+                <p>A Anteprojeto IA é especializada em oferecer suporte para estudantes e profissionais com projetos acadêmicos e empresariais, garantindo eficiência, inovação e resultados de qualidade.</p>
+            </div>
+        </div>
+    </section>
+
+    <!-- Como Criar um Anteprojeto -->
+    <section id="how-to" class="py-5 bg-light">
+        <div class="container">
+            <h2 class="section-title">Como Criar um Anteprojeto</h2>
+            <div class="content">
+                <p>Para criar um anteprojeto eficaz, siga estas etapas:</p>
+                <ul>
+                    <li>Defina claramente o objetivo principal do projeto.</li>
+                    <li>Liste os recursos e as restrições envolvidas.</li>
+                    <li>Identifique os stakeholders e suas expectativas.</li>
+                    <li>Descreva as principais etapas e cronograma.</li>
+                    <li>Inclua uma análise de viabilidade inicial.</li>
+                </ul>
+            </div>
         </div>
     </section>
 
     <!-- Serviços -->
-    <section id="services" class="py-5 bg-light">
+    <section id="services" class="py-5">
         <div class="container">
-            <h2 class="text-center mb-4">Nossos Serviços</h2>
+            <h2 class="section-title">Nossos Serviços</h2>
             <div class="row g-4">
                 <div class="col-md-4">
                     <div class="card">
@@ -136,53 +174,8 @@
         </div>
     </section>
 
-    <!-- Equipe -->
-    <section id="team" class="py-5">
-        <div class="container text-center">
-            <h2>Nossa Equipe</h2>
-            <p class="lead">Conheça os profissionais que transformam ideias em resultados.</p>
-            <div class="row gy-4">
-                <div class="col-md-4">
-                    <img src="https://via.placeholder.com/150" class="rounded-circle mx-auto d-block" alt="João Silva">
-                    <h5 class="mt-3">João Silva</h5>
-                    <p>Especialista em TFC</p>
-                </div>
-                <div class="col-md-4">
-                    <img src="https://via.placeholder.com/150" class="rounded-circle mx-auto d-block" alt="Maria Oliveira">
-                    <h5 class="mt-3">Maria Oliveira</h5>
-                    <p>Consultora Acadêmica</p>
-                </div>
-                <div class="col-md-4">
-                    <img src="https://via.placeholder.com/150" class="rounded-circle mx-auto d-block" alt="Carlos Santos">
-                    <h5 class="mt-3">Carlos Santos</h5>
-                    <p>Desenvolvedor de Ferramentas</p>
-                </div>
-            </div>
-        </div>
-    </section>
-
-    <!-- Contato -->
-    <section id="contact" class="py-5 bg-dark text-white">
-        <div class="container text-center">
-            <h2>Fale Conosco</h2>
-            <p class="lead">Envie-nos uma mensagem para mais informações.</p>
-            <form class="mx-auto" style="max-width: 600px;">
-                <div class="mb-3">
-                    <input type="text" class="form-control" placeholder="Seu Nome" required>
-                </div>
-                <div class="mb-3">
-                    <input type="email" class="form-control" placeholder="Seu Email" required>
-                </div>
-                <div class="mb-3">
-                    <textarea class="form-control" rows="5" placeholder="Sua Mensagem" required></textarea>
-                </div>
-                <button type="submit" class="btn btn-primary">Enviar</button>
-            </form>
-        </div>
-    </section>
-
     <!-- Footer -->
-    <footer class="py-4 text-center">
+    <footer>
         <div class="container">
             <p>&copy; 2025 Anteprojeto IA. Todos os direitos reservados.</p>
         </div>
@@ -190,11 +183,5 @@
 
     <!-- Bootstrap JS -->
     <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.1/dist/js/bootstrap.bundle.min.js"></script>
-    <script>
-        document.querySelector('form').addEventListener('submit', (event) => {
-            event.preventDefault();
-            alert('Mensagem enviada com sucesso!');
-        });
-    </script>
 </body>
 </html>
