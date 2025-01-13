@@ -91,27 +91,6 @@
   </style>
 </head>
 <body>
-  <link href="https://cdn.jsdelivr.net/npm/@n8n/chat/dist/style.css" rel="stylesheet" />
-  <script type="module">
-    import { createChat } from 'https://cdn.jsdelivr.net/npm/@n8n/chat/dist/chat.bundle.es.js';
-I//5:
-    createChat({
-        webhookUrl: 'https://vitaverse.app.n8n.cloud/webhook/4042d607-f790-42e3-bc7b-b53be452360d/chat',
-
-        initialMessages : [ 
-        'Meu nome é Anteprojeto IA. Como posso ajudar você hoje?' 
-    ] , 
-    i18n : { 
-        en : { 
-            title : 'ANTEPROJECTO IA' , 
-            subtitle : "Inicie uma conversa. Estamos aqui para ajudar você 24 horas por dia" , 
-            footer : '' , 
-            getStarted : 'Nova conversa' , 
-            inputPlaceholder : 'Digite seu Tema' , 
-        } , 
-    } , 
-});
-  </script>
   <header class="header">
     <h1>Anteprojeto UNIKIVI</h1>
     <p>Planejamento é o primeiro passo para o sucesso.</p>
@@ -142,8 +121,20 @@ I//5:
 	import { createChat } from 'https://cdn.jsdelivr.net/npm/@n8n/chat/dist/chat.bundle.es.js';
 
 	createChat({
-		webhookUrl: 'YOUR_PRODUCTION_WEBHOOK_URL'
-	});
+		webhookUrl: 'https://vitaverse.app.n8n.cloud/webhook/4042d607-f790-42e3-bc7b-b53be452360d/chat'
+	initialMessages : [ 
+        'Meu nome é Anteprojeto IA. Como posso ajudar você hoje?' 
+    ] , 
+    i18n : { 
+        en : { 
+            title : 'ANTEPROJECTO IA' , 
+            subtitle : "Inicie uma conversa. Estamos aqui para ajudar você 24 horas por dia" , 
+            footer : '' , 
+            getStarted : 'Nova conversa' , 
+            inputPlaceholder : 'Digite seu Tema' , 
+        } , 
+    } , 
+});
 </script>
 
   
