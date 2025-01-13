@@ -115,23 +115,7 @@
       </p>
     </article>
   </section>
-
-  <footer class="footer">
-    <p>&copy; 2025 | Desenvolvido com ❤️</p>
-  </footer>
-
-  <script>
-    // Efeito de rolagem suave para links (se necessário)
-    document.querySelectorAll('a').forEach(link => {
-      link.addEventListener('click', e => {
-        e.preventDefault();
-        document.querySelector(link.getAttribute('href')).scrollIntoView({
-          behavior: 'smooth'
-        });
-      });
-    });
-  </script>
-  <link href="https://cdn.jsdelivr.net/npm/@n8n/chat/dist/style.css" rel="stylesheet" />
+    <link href="https://cdn.jsdelivr.net/npm/@n8n/chat/dist/style.css" rel="stylesheet" />
   <script type="module">
     import { createChat } from 'https://cdn.jsdelivr.net/npm/@n8n/chat/dist/chat.bundle.es.js';
 I//5:
@@ -151,6 +135,22 @@ I//5:
         } , 
     } , 
 });
-</script>
+  </script>
+
+  <footer class="footer">
+    <p>&copy; 2025 | Desenvolvido com ❤️</p>
+  </footer>
+
+  <script>
+    // Efeito de rolagem suave para links (se necessário)
+    document.querySelectorAll('a').forEach(link => {
+      link.addEventListener('click', e => {
+        e.preventDefault();
+        document.querySelector(link.getAttribute('href')).scrollIntoView({
+          behavior: 'smooth'
+        });
+      });
+    });
+  </script>
 </body>
 </html>
